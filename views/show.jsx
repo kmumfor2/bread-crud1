@@ -1,9 +1,13 @@
 const React = require ('react')
 const Default = require('./layouts/default')
 
-function Show({ bread }){
+function Show({ bread, index }){
     return (
         <Default>
+            <form action={`/breads/${index}?_method=DELETE`} method='POST'>
+                <input type= 'submit' value ='DELETE'/>
+            </form>
+
             <h3>{bread.name}</h3>
             <p>
                 and it 

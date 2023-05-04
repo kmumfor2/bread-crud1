@@ -16,7 +16,9 @@ router.get('/new', (req,res) => {
 router.get('/:index',(req, res) => {
     const { index } = req.params
     res.render('show',{
-        bread: Bread[index]
+        bread: Bread[index],
+        index:index
+
     })
     //res.send(Bread [index])
 })
@@ -31,8 +33,14 @@ router.post('/', (req,res) => {
     }
 
     Bread.push(req.body)
-    res.redirect('/breads')
+    res.status(303).redirect('/breads')
 })
 
+router.delete('/:index',(req,res) => {
+    const { index } = req.params
+    Bread.splice(index,1)
+    res.status(303).redirect('/breads')
+}
+)
 
 module.exports = router
