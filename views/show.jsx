@@ -4,10 +4,10 @@ const Default = require('./layouts/default')
 function Show({ bread, index }){
     return (
         <Default>
-            <a href={`/breads/${index}/edit`}>
+            <a href={`/breads/${bread.id}/edit`}>
             <button>Edit</button>
             </a>
-            <form action={`/breads/${index}?_method=DELETE`} method='POST'>
+            <form action={`/breads/${bread.id}?_method=DELETE`} method='POST'>
                 <input type= 'submit' value ='DELETE'/>
             </form>
 
@@ -20,6 +20,7 @@ function Show({ bread, index }){
                 have gluten
             </p>
             <img src= {bread.image} alt = {bread.name} />
+            <p>{bread.getBakedBy()}</p>
             <li>
             <a href = {'/breads'} >Go Home</a> 
             </li>
